@@ -70,6 +70,10 @@ and make sure you are ruuning on localhost with 8000 port
    ```
 6. Mark a elevator as not working or in maintenance 
     ```
+   http://127.0.0.1:8000/api/system/<system_id:int>/elevator/<elevator_id:int>/mark_elevator_under_maintainance/
+   ```
+7. Open/close the door.
+    ```
    http://127.0.0.1:8000/api/system/<system_id:int>/elevator/<elevator_id:int>/open_or_close_door/
    ```
 ## Video Reference Explaining the api_end and working project 
