@@ -50,11 +50,10 @@ class ElevatorSystemViewset(viewsets.ViewSet):
 
 class ElevatorViewSet(viewsets.ModelViewSet):
     """
-        This is a Django viewset for managing Elevator objects, with actions for showing, updating,
-        getting destination, getting current status of requests, making requests, and getting the
-        appropriate serializer class.
-        :return: This code is defining several custom actions for a viewset for the `Elevator` model.
-        The `queryset` and `serializer_class` attributes are also defined.
+       This is Django Viewset based Rest_api for the Elevator system .
+       This Repo consists of all the api end_point which was mention in urls.py or Readme file uploaded into
+       Github and also Demo for this repo as video has been uploaded to github so
+       please get reference from that in-case of any confusion.
     """
     queryset = Elevator.objects.all()
     serializer_class = ElevatorSerializer
@@ -96,7 +95,50 @@ class ElevatorViewSet(viewsets.ModelViewSet):
             return Response({'running': True, 'details': str(requests_pending[0].destination_floor)})
 
         return Response({'running': True, 'details': str(requests_pending[0].requested_floor)})
+    
+    @action(detail=True, methods=['get'])
+    def mark_elevator_under_maintainance(self, request, id=None, pk=None):
+        elevator = self.get_object()
 
+        if not elevator.is_operational:
+            return Response({'running': False, 'details': 'The Elevator had already in under maintanance so we cannot mark it'})
+        else:
+            elevator.is_operational = False
+            elevator.save()
+            return Response({'running': True, 'details': 'Marked this elevator is under maintainance sucessully'})
+
+    @action(detail=True, methods=['get'])
+    def open_or_close_door(self, request, id=None, pk=None):
+        elevator = self.get_object()
+
+        if elevator.is_door_open:
+            elevator.is_door_open = False
+            elevator.save()
+            return Response({'running': True, 'details': 'Elevator Door is Closed Successully because its door was open'})
+        else:
+            elevator.is_door_open = True
+            elevator.save()
+            return Response({'running': True, 'details': 'Elevator Door is opend successfully becaise it was Closed '})
+
+    @action(detail=True,methods=['get'])
+    def moving_diretion(self,request,id=None,pk=None):
+        """
+        this will fetch moving direction of an elevator 
+        GOING_UP = 1
+        NOT_MOVING = 0
+        GOING_DOWN = -1
+        Response will be in integer for now but it can be mapped with any values if needed based on 
+        business requirement
+        """
+        elevator = self.get_object()
+        if not elevator.is_operational:
+            return Response({'running': False, 'details': 'The Elevator is not operational'})
+        requests_pending = ElevatorRequest.objects.filter(elevator=elevator, is_active=True).order_by('request_time')
+
+        if requests_pending.count() == 0:
+            return Response({'running': False, 'details': 'The Elevator is not running currently, No pending requests'})
+
+        return Response({'running': True, 'Moving Direction': elevator.running_status})
         
     @action(detail=True, methods=['get'])
     def req_current_status(self, request, id=None, pk=None):
