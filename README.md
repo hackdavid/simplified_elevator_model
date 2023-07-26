@@ -1,11 +1,12 @@
 # simplified_elevator_model
 ![alt system intialized api image](assests/system.png)
 
-A simplified `elevator model` in Python. We'll ignore a lot of what goes into a real world elevator, like physics, maintenance overrides, and optimizations for traffic patterns. Main feature is to decide whether the elevator should go up, go down, or stop. 
+In this challenge,it was asked to implement the business logic for a simplified elevator model in Python. that'll ignore a lot of what goes into a real world elevator, like physics, maintenance overrides, and optimizations for traffic patterns. All you are asked to do is to decide whether the elevator should go up, go down, or stop. 
 
-This is built using Python & Django (`Django Rest Framework` specifically with ViewSets, Serializers etc) using `PostgreSQL` as database.
+This needs to be built using Python & Django (Django Rest Framework specifically with Models, ViewSets, Serializers etc)
 
 An elevator system, which can be initialised with N elevators and maintains the elevator states as well. 
+
 
 ## Installation : 
 1. Make a python virtual enviornment in your preferred system
