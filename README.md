@@ -93,4 +93,8 @@ in the following sequence
 
 
 Note : All api end is mention ne readme or mainapp/urls.py so please refere
+Also  The execuation were done through the thread and it was really fast as compared to real-life elevator
+[api.webm](https://github.com/hackdavid/simplified_elevator_model/assets/64134326/361dce7a-ab39-4643-aa63-893768d6073c)
+
+
 
