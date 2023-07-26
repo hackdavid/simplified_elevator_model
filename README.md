@@ -42,4 +42,34 @@ DATABASES = {
    }
 }
 ```
-4. You can get the overview of api end_point in mainapp/urls.py 
+4. You can get the overview of api end_point in mainapp/urls.py
+
+## API End-Point
+All api end_points are given below so that it will be easy to naviate to specifc api call easy
+and make sure you are ruuning on localhost with 8000 port
+
+1. Initialise the elevator system to create ‘n’ elevators in the system
+   ```
+   http://127.0.0.1:8000/api/system/
+   ```
+2. Fetch all requests for a given elevator
+    ```
+   http://127.0.0.1:8000/api/system/<system_id:int>/elevator/<elevator_id:int>/req_current_status/
+   ```
+3. Fetch the next destination floor for a given elevator
+    ```
+   http://127.0.0.1:8000/api/system/<system_id:int>/elevator/<elevator_id:int>/destination/
+   ```
+4. Fetch if the elevator is moving up or down currently
+    ```
+   http://127.0.0.1:8000/api/system/<system_id:int>/elevator/<elevator_id:int>/moving_diretion/
+   ```
+5. Saves user request to the list of requests for a elevator(create a new request and it will save into database)
+    ```
+   http://127.0.0.1:8000/api/system/<system_id:int>/elevator/<elevator_id:int>/make_request/
+   ```
+6. Mark a elevator as not working or in maintenance 
+    ```
+   http://127.0.0.1:8000/api/system/<system_id:int>/elevator/<elevator_id:int>/open_or_close_door/
+   ```
+## Video Reference Explaining the api_end and working project 
