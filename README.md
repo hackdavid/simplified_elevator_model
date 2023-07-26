@@ -78,3 +78,19 @@ and make sure you are ruuning on localhost with 8000 port
    http://127.0.0.1:8000/api/system/<system_id:int>/elevator/<elevator_id:int>/open_or_close_door/
    ```
 ## Video Reference Explaining the api_end and working project 
+
+In this video i am showing the api end_points and their response
+in the following sequence
+
+1. initialize the elevator_system
+2. make_request for specific floor
+3. check elevator status
+4. check destination or elevator
+5. check elevator direction
+6. open/close the door
+7. marked the elvator operational = false
+
+
+
+Note : All api end is mention ne readme or mainapp/urls.py so please refere
+
