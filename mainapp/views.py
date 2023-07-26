@@ -31,7 +31,7 @@ class ElevatorSystemViewset(viewsets.ViewSet):
     serializer_class = ElevatorSystemSerializer
 
     def create(self, request, *args, **kwargs):
-        serializer = self.get_serializer(data=request.data)
+        serializer = self.serializer_class(data=request.data)
         serializer.is_valid(raise_exception=True)
         elevator_system = serializer.save()
         initalize_elevators(
